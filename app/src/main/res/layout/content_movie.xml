@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/Main_color">
+
+    <data>
+        <variable
+            name="secondaryMovie"
+            type="com.example.medb.model.Movie" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:context="com.example.medb.view.MovieActivity"
+        tools:showIn="@layout/activity_movie">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/ad">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:showIn="@layout/activity_movie">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tvMovieTitle"
+                        android:layout_marginLeft="10dp"
+                        android:padding="16dp"
+                        android:layout_marginTop="3dp"
+                        android:textSize="20sp"
+                        android:text="@{secondaryMovie.title}"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_marginStart="16dp"
+                        tools:layout_constraintTop_creator ="1"
+                        tools:layout_constraintLeft_creator ="1" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tvMovieRating"
+                        android:layout_marginLeft="10dp"
+                        android:padding="16dp"
+                        android:textSize="20sp"
+                        app:layout_constraintTop_toBottomOf="@+id/tvMovieTitle"
+                        android:text="@{Double.toString(secondaryMovie.voteAverage)}"
+                        android:layout_marginStart="16dp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        tools:layout_constraintTop_creator="1" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tvReleaseDate"
+                        android:text="@{secondaryMovie.releaseDate}"
+                        android:layout_marginLeft="10dp"
+                        android:padding="16dp"
+                        android:textSize="20sp"
+                        app:layout_constraintTop_toBottomOf="@+id/tvMovieRating"
+                        app:layout_constraintLeft_toLeftOf="parent" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tvPlotsynopsis"
+                        android:text="@{secondaryMovie.overview}"
+                        android:layout_marginLeft="10dp"
+                        android:padding="16dp"
+                        android:textSize="20sp"
+                        app:layout_constraintTop_toBottomOf="@+id/tvReleaseDate"
+                        app:layout_constraintLeft_toLeftOf="parent" />
+
+                    <!-- Add to Watchlist button -->
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/btnAddToWatchlist"
+                        android:text="Add to watchlist"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/roboto_black"
+                        android:shadowColor="#000000"
+                        android:shadowDx="3"
+                        android:shadowDy="3"
+                        android:shadowRadius="3"
+                        app:layout_constraintTop_toBottomOf="@+id/tvPlotsynopsis"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </ScrollView>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</layout>
